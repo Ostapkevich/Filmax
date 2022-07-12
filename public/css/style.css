@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  
+}
+
+main {
+  flex: 1 0 auto;
+  
+  
+}
+
+img {
+  margin-top: 8px
+}
+.auth {
+padding-top: 1rem;
+}
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+  background-color: #e5e1d5
+}
+.tabs .indicator {
+  
+  background-color: #5d4037;
+  
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+  background-color: transparent;
+  color: black;
+}
+.tabs .tab a {
+  color: #455a64;
+ 
+}

@@ -1,0 +1,53 @@
+<div style="background-color:#f6f1e4 ;" class="container ">
+    <div class="row auth ">
+        <div class="col s12 ">
+            <ul class="tabs " style="background-color:#f6f1e4 ;">
+                <li class="tab  col s4 offset-s2 "><a class="active " href="#login"> Вхід </a></li>
+                <li class="tab col  s4"><a href="#register">Реєстрація</a></li>
+            </ul>
+        </div>
+        <div id="login" class="col s6 offset-s3">
+            <h2>Увійти до магазину</h2>
+            <form action="auth/login" method="POST">
+                <div class="input-field">
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                    <span class="helper-text" data-error="Введіть email"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="password" name="password" type="password" class="validate" required>
+                    <label for="password">Пароль</label>
+                    <span class="helper-text" data-error="Введіть пароль"></span>
+                </div>
+
+                <button class="btn btn-primary brown darken-2" type="submit">Увійти</button>
+            </form>
+        </div>
+        <div id="register" class="col s6 offset-s2">
+            <h2>Створити акаунт</h2>
+            <form action="/auth/registr" method="POST">
+                <div class="input-field">
+                    <input id="remail" name="email" type="email" class="validate" required>
+                    <label for="remail">Email</label>
+                    <span class="helper-text" data-error="Введіть email"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="rpassword" name="password" type="password" class="validate" required>
+                    <label for="rpassword">Пароль</label>
+                    <span class="helper-text" data-error="Введіть пароль"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="confirm" name="confirm" type="password" class="validate" required>
+                    <label for="confirm">Повторіть пароль</label>
+                    <span class="helper-text" data-error="Введіть пароль"></span>
+                </div>
+
+                <button class="btn btn-primary brown darken-2" type="submit">Зареєструватись</button>
+            </form>
+        </div>
+
+    </div>
+</div>

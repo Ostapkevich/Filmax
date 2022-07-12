@@ -1,0 +1,27 @@
+{{>head}}
+
+<body>
+    <header>
+        {{>navbar}}
+    </header>
+
+    <main style="background-color: #f6f1e4;">
+        {{{body}}}
+    </main>
+    <footer>
+        {{>footer}}
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script src="js/nav.js"></script>
+    {{#if place }}
+    <script src="js/place.js"></script>
+    
+    {{/if}}
+    {{#if auth }}
+    <script src="js/login.js"></script>
+    
+    {{/if}}
+</body>
+
+</html>
