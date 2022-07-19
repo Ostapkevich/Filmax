@@ -23,9 +23,12 @@ routTicket.get("/ticket:idRasp", async (req, res) => {
       title: "Опис",
       now: true,
       cont: zapAboutSeans[0],
-      place:true
-      //layout:null
-      
+      place:true,
+      img:req.query.img,
+      date:req.query.date,
+      month:req.query.month,
+      day:req.query.day,
+      time:req.query.time
       });
   } catch (error) {
     res.status(500).json({

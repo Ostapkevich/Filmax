@@ -4,6 +4,7 @@ const path = require('path');
 const expr = require('Express');
 const app = expr();
 const session=require('express-session');
+const varMiddleware=require('./middleware/variables');
 const exprhbs = require("express-handlebars");
 const ehbs = exprhbs.create({//создание движка для рендеринга страниц
   defaultLayout: "scheme",//основной файл -схема, которая описывает макет страницы
@@ -15,7 +16,7 @@ const ehbs = exprhbs.create({//создание движка для рендер
       for (let key in places) {
         if (i>=from && i<=to){
           if (places[key]===1){
-           str= str+ `<a onclick="getPlace()" class="btn waves-effect waves-light " style="background-color:#8d6e63;" data-seat="${places[key]}"><i class="material-icons left">airline_seat_recline_extra</i>${addZero(i)}</a>`;
+           str= str+ `<a onclick="getPlace()" class="btn waves-effect waves-light " style="background-color:#4db6ac;" data-seat="${places[key]}"><i class="material-icons left">airline_seat_recline_extra</i>${addZero(i)}</a>`;
           }
            else {
            str=str+ `<a class=" btn disabled" data-seat="${places[key]}" ><i class="material-icons left">airline_seat_recline_extra</i>${addZero(i)}</a>`;
@@ -25,6 +26,7 @@ const ehbs = exprhbs.create({//создание движка для рендер
       }
       return str;
     }
+    
 	} 
 });             
 function addZero(n) {
@@ -40,6 +42,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(varMiddleware);
 const rtNow=require('./routes/routNow.js');
 app.use(rtNow);
 const rtSoon=require('./routes/routSoon.js');
@@ -54,29 +57,25 @@ const rtTicket=require('./routes/routTicket');
 app.use(rtTicket);
 const rtAuth=require('./routes/routauth');
 app.use(rtAuth);
-
-
-
-const rtVidguki=require('./routes/routVidguki.js');
-app.use(rtVidguki);
+/*const rtVidguki=require('./routes/routVidguki.js');
+app.use(rtVidguki);*/
+app.use('/vidguki', function(req, res){
+   
+ 
+});
 const rtKabinet=require('./routes/routKabinet.js');
-
 app.use(rtKabinet);
-
-
 const PORT = process.env.PORT || 3000;
  function start() {
   try {
-    //const url = `mongodb+srv://Sergey:fdgR89Yu21Ugfr@cluster0.n20xw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-    //await mongoose.connect(url, {useNewUrlParser: true});
-    app.listen(PORT, () => {
+      app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (e) {
     console.log(e.message);
   }
 }
-console.log("poehali 2");
+
 
 start();
 

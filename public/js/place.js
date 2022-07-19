@@ -2,10 +2,10 @@
 function getPlace() {
   let elHtml = event.currentTarget;
   if (elHtml.getAttribute("data-seat") == 1) {
-    elHtml.style.background = "#5d4037   ";
+    elHtml.style.background = "#009688";
     elHtml.setAttribute("data-seat", 0);
   } else {
-    elHtml.style.background = "#8d6e63  ";
+    elHtml.style.background = "#4db6ac  ";
     elHtml.setAttribute("data-seat", 1);
   }
 }

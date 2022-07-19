@@ -14,7 +14,7 @@ main {
 img {
   margin-top: 8px
 }
-.auth {
+.top {
 padding-top: 1rem;
 }
 .tabs .tab a:focus, .tabs .tab a:focus.active {
@@ -32,4 +32,9 @@ padding-top: 1rem;
 .tabs .tab a {
   color: #455a64;
  
+}
+.ln {
+  background-color: gray;
+  height: 3px;
+  width: 75%;
 }

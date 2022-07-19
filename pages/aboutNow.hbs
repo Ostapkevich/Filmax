@@ -1,64 +1,66 @@
-<div class="container " >
+<div class="container ">
   <div class="row">
     <div class="col s12 m9">{{!Все про фильм}}
+      {{#with cont.film}}
       <div class="row">{{!Все без содержания фильма}}
         <div class="col s12 m4 "> {{!Картинка }}
           <div class="card">
             <div class="card-image">
-              <img class="responsive-img" src='Content/img/{{cont.img_name}}' width="280" height="405" alt="" />
+              <img class="responsive-img" src='Content/img/{{img_name}}' width="280" height="405" alt="" />
             </div>
             <div class="card-action">
-              <a href="/movie{{cont.video_name}} " target="_blank">
-            <span class="black-text">
-              <b>Дивитися трейлер</b>
-            </span>
-          </a>
+              <a href="/movie{{video_name}} " target="_blank">
+                <span class="black-text">
+                  <b>Дивитися трейлер</b>
+                </span>
+              </a>
             </div>
           </div>
         </div>
         <div class="col s12 m8">{{!Описание}}
           <div class="row">{{!Название фильма}}
             <div class="col">
-              <h3>{{cont.filmname}}</h3>
+              <h3>{{filmname}}</h3>
             </div>
           </div>
           <div class="row">{{!Атрибуты фильма}}
             <div class="row">
               <div class="col  s3"> Рік:</div>
-              <div class="col  s9"> {{cont.rik}}</div>
+              <div class="col  s9"> {{rik}}</div>
             </div>
             <div class="row">
               <div class="col  s3"> Жанр:</div>
-              <div class="col  s9"> {{cont.zhanr}}</div>
+              <div class="col  s9"> {{zhanr}}</div>
             </div>
             <div class="row">
               <div class="col  s3"> Режисер:</div>
-              <div class="col  s9"> {{cont.rezhiser}}</div>
+              <div class="col  s9"> {{rezhiser}}</div>
             </div>
             <div class="row">
               <div class="col  s3"> У ролях:</div>
-              <div class="col  s9"> {{cont.roli}}</div>
+              <div class="col  s9"> {{roli}}</div>
             </div>
             <div class="row">
               <div class="col  s3"> Студія:</div>
-              <div class="col  s9"> {{cont.studia}}</div>
+              <div class="col  s9"> {{studia}}</div>
             </div>
             <div class="row">
               <div class="col  s3"> Країна:</div>
-              <div class="col  s9"> {{cont.kraina}}</div>
+              <div class="col  s9"> {{kraina}}</div>
             </div>
             <div class="row">
               <div class="col  s3"> Тривалість:</div>
-              <div class="col  s9"> {{cont.trivalist}}</div>
+              <div class="col  s9"> {{trivalist}}</div>
             </div>
           </div>
         </div>
       </div>
       <div class="row">{{!Содержание фильма}}
         <div class="col">
-          {{cont.opis}}
+          {{opis}}
         </div>
       </div>
+      {{/with}}
     </div>
     <div class="col  s12 m3">{{!Покупка билета}}
       <ul class="collection  ">
@@ -66,20 +68,19 @@
           <div class="row">
             <div class="col">Купити квітки</div>
           </div>
-          {{#each rasp}}
+          
+          {{#each cont.rasp}}
           <div class="row ">
             <div class="col">{{date}}, {{month}} </div>
             <div class="col">{{weekday}} </div>
           </div>
-
           <div class="row">
             {{#each rsp}}
-            <div class="col"><a href="/ticket{{idr}}"> {{sns}}</a> </div>
+            <div class="col"><a href="/ticket{{idr}}?img={{../img}}&date={{../date}}&month={{../month}}&day={{../weekday}}&time={{sns}}"> {{sns}}</a> </div>
             {{/each}}
           </div>
           {{/each}}
-
-        </li>
+         </li>
       </ul>
     </div>
   </div>
