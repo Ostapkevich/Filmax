@@ -18,6 +18,7 @@ routAboutNow.get("/now:idFilm", async (req, res) => {
       `select idRasp, seans from seans where idFm=${req.params.idFilm} order by seans;`
     );
     connection.end();
+    console.log(zapAbouFilm);
     let formRaspisanieCount = 0;
     let formRaspisanie = [];
     let seans = {};

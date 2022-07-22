@@ -1,5 +1,5 @@
 /*jshint esversion: 8 */
-
+var mysql2 = require('mysql2/promise');
 const path = require('path');
 const expr = require('Express');
 const app = expr();
@@ -37,11 +37,27 @@ app.set('view engine', 'hbs');// указываем в параметре view e
 app.set('views', 'pages');//указываем в параметре views, где будут хранится все шаблоны, папка partials системная фреймворка
 app.use(expr.static(path.join(__dirname, "public")));
 app.use(expr.urlencoded({extended:true}));
-app.use(session({
+
+var MySQLStore = require('express-mysql-session')(session);
+var options = {
+	host: 'localhost',
+	//port: 3000,
+	user: 'root',
+	password: 'ostap_serg_SQL',
+	database: 'cinema'
+ 
+  };
+  
+  var connection = mysql2.createPool(options);
+  var sessionStore = new MySQLStore({}, connection);
+  app.use(session({
   secret: 'some secret value',
   resave: false,
-  saveUninitialized: false
-}));
+  saveUninitialized: false,
+  key: 'session_cookie_name',
+	store: sessionStore,
+  expiration: 30000
+	}));
 app.use(varMiddleware);
 const rtNow=require('./routes/routNow.js');
 app.use(rtNow);
