@@ -18,7 +18,6 @@ routAboutNow.get("/now:idFilm", async (req, res) => {
       `select idRasp, seans from seans where idFm=${req.params.idFilm} order by seans;`
     );
     connection.end();
-    console.log(zapAbouFilm);
     let formRaspisanieCount = 0;
     let formRaspisanie = [];
     let seans = {};
@@ -37,7 +36,8 @@ routAboutNow.get("/now:idFilm", async (req, res) => {
           ":" +
           zapRaspisanie[i].seans.getMinutes();
         tm.push(obgFortm);
-        obgFortm = new Object();
+        obgFortm=null;
+        obgFortm = {};
         if (i == zapRaspisanie.length - 1) {
           seans.date = zapRaspisanie[i].seans.getDate();
           seans.month = new Intl.DateTimeFormat("uk-UK", {
@@ -65,19 +65,18 @@ routAboutNow.get("/now:idFilm", async (req, res) => {
         dateCurrent = zapRaspisanie[i].seans.getDate();
         seans = {};
         tm = null;
-        tm = new Array();
+        tm = [];
         i = i - 1;
         formRaspisanieCount++;
       }
     }
-    
-    res.render("aboutNow", {
+      res.render("aboutNow", {
       title: "Опис",
       now: true,
       cont: {
         film: zapAbouFilm[0],
         rasp: formRaspisanie,
-        img: zapAbouFilm[0].img_name,
+        img: zapAbouFilm[0].img_name
       },
     });
   } catch (error) {

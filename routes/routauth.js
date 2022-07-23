@@ -34,7 +34,6 @@ routAuth.post("/login", async (req, res) => {
       password: "ostap_serg_SQL",
     });
     const { mail, pass } = req.body;
-    
     const user = await connection.query(
       `SELECT idUser, Nick, mail FROM user WHERE mail='${mail}' AND Password= '${pass }'`
     );
